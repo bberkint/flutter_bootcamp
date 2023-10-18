@@ -9,8 +9,8 @@ void main(List<String> args) {
   var kedi = Kedi();
   var kopek = Kopek();
 
-  hayvan.sesCikar();
-  memeli.sesCikar();
-  kedi.sesCikar();
-  kopek.sesCikar();
+  hayvan.sesCikar(); // kalitim yok kendi classına erişti
+  memeli.sesCikar(); // kalitim var ve Hayvan classının fonksiyonuna erişti
+  kedi.sesCikar(); // kalitim var ve kendi metoduna erişti
+  kopek.sesCikar(); // kalitim var ve kendi metoduna erişti
 }
