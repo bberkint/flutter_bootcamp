@@ -47,4 +47,27 @@ void main(List<String> args) {
     print(
         "No     :   ${o.no}    -      Ad    : ${o.ad}   -   Sınıf : ${o.sinif}");
   }
+
+  // Filtreleme
+  print("----------------Filtreleme 1 ----------------");
+  Iterable<Ogrenciler> f1 = ogrencilerListesi.where((ogrenciNesnesi) {
+    return ogrenciNesnesi.no > 100 && ogrenciNesnesi.no < 250;
+  });
+
+  var liste1 = f1.toList();
+  for (var o in liste1) {
+    print(
+        "No     :   ${o.no}    -      Ad    : ${o.ad}   -   Sınıf : ${o.sinif}");
+  }
+
+  print("----------------Filtreleme 2 ----------------");
+  Iterable<Ogrenciler> f2 = ogrencilerListesi.where((ogrenciNesnesi) {
+    return ogrenciNesnesi.ad.contains("y");
+  });
+
+  var liste2 = f2.toList();
+  for (var o in liste2) {
+    print(
+        "No     :   ${o.no}    -      Ad    : ${o.ad}   -   Sınıf : ${o.sinif}");
+  }
 }
