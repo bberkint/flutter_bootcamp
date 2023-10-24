@@ -13,12 +13,20 @@ class Anasayfa extends StatefulWidget {
 class _AnasayfaState extends State<Anasayfa> {
   @override
   Widget build(BuildContext context) {
+    var ekranBilgisi = MediaQuery.of(context);
+    final double ekranYuksekligi = ekranBilgisi.size.height;
+    final double ekranGenisligi = ekranBilgisi.size.width;
+
+    print("Ekran Yüksekliği : $ekranYuksekligi");
+    print("Ekran Genişliği : $ekranGenisligi");
     return Scaffold(
       appBar: AppBar(
         title: Text(
           "Pizza",
-          style:
-              TextStyle(color: yaziRenk1, fontFamily: "Pacifico", fontSize: 30),
+          style: TextStyle(
+              color: yaziRenk1,
+              fontFamily: "Pacifico",
+              fontSize: ekranGenisligi / 19),
         ),
         backgroundColor: anaRenk,
         centerTitle: true,
@@ -26,7 +34,7 @@ class _AnasayfaState extends State<Anasayfa> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 16),
+            padding: EdgeInsets.only(top: ekranYuksekligi / 43),
             child: Text(
               "Beef Cheese",
               style: TextStyle(
@@ -42,38 +50,10 @@ class _AnasayfaState extends State<Anasayfa> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Cheese",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Sausage",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Olive",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "pepper",
-                    style: TextStyle(color: yaziRenk1),
-                  ),
-                  style: TextButton.styleFrom(backgroundColor: anaRenk),
-                ),
+                Chip(icerik: "Cheese"),
+                Chip(icerik: "Sausage"),
+                Chip(icerik: "Olive"),
+                Chip(icerik: "Pepper"),
               ],
             ),
           ),
@@ -116,8 +96,8 @@ class _AnasayfaState extends State<Anasayfa> {
               ),
               // const Spacer(),
               SizedBox(
-                width: 200,
-                height: 50,
+                width: ekranGenisligi / 2,
+                height: ekranYuksekligi / 14,
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
@@ -134,6 +114,24 @@ class _AnasayfaState extends State<Anasayfa> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class Chip extends StatelessWidget {
+  String icerik;
+
+  Chip({required this.icerik});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(
+        icerik,
+        style: TextStyle(color: yaziRenk1),
+      ),
+      style: TextButton.styleFrom(backgroundColor: anaRenk),
     );
   }
 }
