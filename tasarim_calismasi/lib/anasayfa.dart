@@ -77,6 +77,61 @@ class _AnasayfaState extends State<Anasayfa> {
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                Text(
+                  "20 Min",
+                  style: TextStyle(
+                      fontSize: 22,
+                      color: yaziRenk2,
+                      fontWeight: FontWeight.bold),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Text(
+                    "Delivery",
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: anaRenk,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Text(
+                  "Meat Lover, get ready to meet your pizza !",
+                  style: TextStyle(fontSize: 22, color: anaRenk),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                "\$ 5.98",
+                style: TextStyle(
+                    fontSize: 44, color: anaRenk, fontWeight: FontWeight.bold),
+              ),
+              // const Spacer(),
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "ADD TO CART",
+                    style: TextStyle(color: yaziRenk1, fontSize: 18),
+                  ),
+                  style: TextButton.styleFrom(
+                      backgroundColor: anaRenk,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(5)))),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
