@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tasarim_calismasi/anasayfa.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:tasarim_calismasi/odev3.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Anasayfa(),
+      home: const Odev3(),
     );
   }
 }

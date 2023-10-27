@@ -8,6 +8,13 @@
     "teslimatBaslik":"Delivery",
     "pizzaAciklama":"Meat Lover, get ready to meet your pizza !",
     "fiyat":"$ 5.98",
-    "buttonYazi":"ADD TO CART"
+    "buttonYazi":"ADD TO CART",
+    "filmMain":"Home Alone",
+    "filmTarih":"1986",
+    "yonetmen":"Michael Damien",
+    "kategori":"Comedy",
+    "butonYazi2":"Comedy Movie",
+    "butonYazi3":"An American movie was recorded in 1986",
+    "butonYazi4":"Made by Michael"
 
 }
