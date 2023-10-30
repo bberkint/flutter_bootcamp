@@ -1,3 +1,4 @@
+import 'package:calisma_yapisi/kisiler.dart';
 import 'package:calisma_yapisi/oyun_ekrani.dart';
 import 'package:flutter/material.dart';
 
@@ -33,10 +34,14 @@ class _AnasayfaState extends State<Anasayfa> {
             ),
             ElevatedButton(
               onPressed: () {
+                var kisi =
+                    Kisiler(ad: "Berkin", yas: 23, boy: 1.81, bekar: true);
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const OyunEkrani()));
+                        builder: (context) => OyunEkrani(
+                              kisi: kisi,
+                            )));
               },
               child: const Text("Başla"),
             ),
