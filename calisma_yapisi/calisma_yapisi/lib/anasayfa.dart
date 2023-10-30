@@ -13,8 +13,15 @@ class _AnasayfaState extends State<Anasayfa> {
   int sayac = 0;
 
   @override
+  void initState() {
+    //  Sayfa ilk açıldığında çalışır
+
+    super.initState();
+    print("İnitState(); metodu çalıştı");
+  }
+
+  @override
   Widget build(BuildContext context) {
-    print("build() metodu çalıştı");
     return Scaffold(
       appBar: AppBar(
         title: const Text("Anasayfa"),
@@ -41,7 +48,9 @@ class _AnasayfaState extends State<Anasayfa> {
                     MaterialPageRoute(
                         builder: (context) => OyunEkrani(
                               kisi: kisi,
-                            )));
+                            ))).then((value) {
+                  print("Anasayfaya Dönüldü");
+                });
               },
               child: const Text("Başla"),
             ),
