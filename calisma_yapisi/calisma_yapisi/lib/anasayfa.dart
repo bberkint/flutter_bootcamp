@@ -11,6 +11,7 @@ class Anasayfa extends StatefulWidget {
 
 class _AnasayfaState extends State<Anasayfa> {
   int sayac = 0;
+  bool kontrol = false;
 
   @override
   void initState() {
@@ -18,6 +19,11 @@ class _AnasayfaState extends State<Anasayfa> {
 
     super.initState();
     print("İnitState(); metodu çalıştı");
+  }
+
+  Future<int> toplama(int sayi1, int sayi2) async {
+    int toplam = sayi1 + sayi2;
+    return toplam;
   }
 
   @override
@@ -36,6 +42,7 @@ class _AnasayfaState extends State<Anasayfa> {
                 setState(() {
                   sayac += 1;
                 });
+                print("Tıklandı");
               },
               child: const Text("Tıkla"),
             ),
@@ -53,6 +60,53 @@ class _AnasayfaState extends State<Anasayfa> {
                 });
               },
               child: const Text("Başla"),
+            ),
+            Visibility(visible: kontrol, child: const Text("Merhaba")),
+            (() {
+              if (kontrol) {
+                return const Text(
+                  "Merhaba",
+                  style: TextStyle(color: Colors.green),
+                );
+              } else {
+                return const Text(
+                  "Güle Güle",
+                  style: TextStyle(color: Colors.purple),
+                );
+              }
+            }()),
+            Text(
+              kontrol ? "Merhaba" : "Güle Güle",
+              style: TextStyle(color: kontrol ? Colors.yellow : Colors.red),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  kontrol = true;
+                });
+              },
+              child: const Text("Durum 1 (True)"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  kontrol = false;
+                });
+              },
+              child: const Text("Durum 1 (False)"),
+            ),
+            FutureBuilder<int>(
+              future: toplama(10, 20),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return const Text("Hata oluştu");
+                }
+                if (snapshot.hasData) {
+                  return Text("Sonuç : ${snapshot.data}");
+                } else {
+                  return Text("Sonuç yok");
+                }
+              },
             ),
           ],
         ),
