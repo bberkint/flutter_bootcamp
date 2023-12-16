@@ -1,4 +1,5 @@
 import 'package:calisma_yapisi/anasayfa.dart';
+import 'package:calisma_yapisi/kullanici_etkilesimi/kullanici_etkilesimi_sayfa.dart';
 import 'package:flutter/material.dart';
 
 import 'bottom_navigation_kullanimi/bottom_navigation_anasayfa.dart';
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const BottomNavigationAnasayfa(),
+      home: const KullaniciEtkilesimiSayfa(),
     );
   }
 }
