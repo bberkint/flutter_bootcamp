@@ -7,6 +7,7 @@ class Anasayfa extends StatefulWidget {
   State<Anasayfa> createState() => _AnasayfaState();
 }
 
+// Day 6 Codes
 class _AnasayfaState extends State<Anasayfa> {
   var tfController = TextEditingController();
   String alinanVeri = "";
