@@ -19,215 +19,259 @@ class _AnasayfaState extends State<Anasayfa> {
   var tfSaat = TextEditingController();
   var tfTarih = TextEditingController();
 
+  var ulkelerListesi = <String>[];
+  String secilenUlke = "Türkiye";
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    ulkelerListesi.add("Türkiye");
+    ulkelerListesi.add("İtalya");
+    ulkelerListesi.add("Hollanda");
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text("Widgets"),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text(alinanVeri),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TextField(
-                controller: tfController,
-                decoration: InputDecoration(
-                  hintText: "Veri",
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Text(alinanVeri),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  controller: tfController,
+                  decoration: InputDecoration(
+                    hintText: "Veri",
+                  ),
+                  keyboardType: TextInputType.number,
+                  obscureText: true,
                 ),
-                keyboardType: TextInputType.number,
-                obscureText: true,
               ),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  alinanVeri = tfController.text;
-                });
-              },
-              child: Text("Veriyi Al"),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      resimAdi = "mood.png";
-                    });
-                  },
-                  child: Text("Resim 1"),
-                ),
-                Image.asset("resimler/$resimAdi"),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      resimAdi = "uzgun.png";
-                    });
-                  },
-                  child: Text("Resim 2"),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: SwitchListTile(
-                    title: const Text("Dart"),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: switchKontrol,
-                    onChanged: (veri) {
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    alinanVeri = tfController.text;
+                  });
+                },
+                child: Text("Veriyi Al"),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
                       setState(() {
-                        switchKontrol = veri;
+                        resimAdi = "mood.png";
                       });
                     },
+                    child: Text("Resim 1"),
                   ),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: CheckboxListTile(
-                    title: const Text("Flutter"),
-                    controlAffinity: ListTileControlAffinity.leading,
-                    value: checkboxKontrol,
-                    onChanged: (veri) {
+                  Image.asset("resimler/$resimAdi"),
+                  ElevatedButton(
+                    onPressed: () {
                       setState(() {
-                        checkboxKontrol = veri!;
+                        resimAdi = "uzgun.png";
                       });
                     },
+                    child: Text("Resim 2"),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 200,
-                  child: RadioListTile(
-                    title: const Text("Galatasaray"),
-                    value: 1,
-                    groupValue: radioDeger,
-                    onChanged: (veri) {
-                      setState(() {
-                        radioDeger = veri!;
-                      });
-                    },
-                  ),
-                ),
-                SizedBox(
-                  width: 200,
-                  child: RadioListTile(
-                    title: const Text(
-                      "Real Madrid",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    value: 2,
-                    groupValue: radioDeger,
-                    onChanged: (veri) {
-                      setState(() {
-                        radioDeger = veri!;
-                      });
-                    },
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      progressKontrol = true;
-                    });
-                  },
-                  child: Text("Başla"),
-                ),
-                Visibility(
-                    visible: progressKontrol,
-                    child: const CircularProgressIndicator()),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      progressKontrol = false;
-                    });
-                  },
-                  child: Text("Dur"),
-                ),
-              ],
-            ),
-            Text(ilerleme.toInt().toString()),
-            Slider(
-              max: 100.0,
-              min: 0.0,
-              value: ilerleme,
-              onChanged: (veri) {
-                setState(() {
-                  ilerleme = veri;
-                });
-              },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                SizedBox(
-                  width: 120,
-                  child: TextField(
-                    controller: tfSaat,
-                    decoration: const InputDecoration(
-                      hintText: "Saat",
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: SwitchListTile(
+                      title: const Text("Dart"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: switchKontrol,
+                      onChanged: (veri) {
+                        setState(() {
+                          switchKontrol = veri;
+                        });
+                      },
                     ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    showTimePicker(
-                            context: context,
-                            initialTime: TimeOfDay.fromDateTime(DateTime.now()))
-                        .then((value) {
-                      tfSaat.text = "${value!.hour} : ${value.minute}";
-                    });
-                  },
-                  icon: const Icon(Icons.access_time),
-                ),
-                SizedBox(
-                  width: 120,
-                  child: TextField(
-                    controller: tfTarih,
-                    decoration: const InputDecoration(
-                      hintText: "Tarih",
+                  SizedBox(
+                    width: 200,
+                    child: CheckboxListTile(
+                      title: const Text("Flutter"),
+                      controlAffinity: ListTileControlAffinity.leading,
+                      value: checkboxKontrol,
+                      onChanged: (veri) {
+                        setState(() {
+                          checkboxKontrol = veri!;
+                        });
+                      },
                     ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2030))
-                      ..then((value) {
-                        tfTarih.text =
-                            "${value!.day} / ${value.month} / ${value.year}";
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 200,
+                    child: RadioListTile(
+                      title: const Text("Galatasaray"),
+                      value: 1,
+                      groupValue: radioDeger,
+                      onChanged: (veri) {
+                        setState(() {
+                          radioDeger = veri!;
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: 200,
+                    child: RadioListTile(
+                      title: const Text(
+                        "Real Madrid",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      value: 2,
+                      groupValue: radioDeger,
+                      onChanged: (veri) {
+                        setState(() {
+                          radioDeger = veri!;
+                        });
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        progressKontrol = true;
                       });
-                  },
-                  icon: const Icon(Icons.date_range),
+                    },
+                    child: Text("Başla"),
+                  ),
+                  Visibility(
+                      visible: progressKontrol,
+                      child: const CircularProgressIndicator()),
+                  ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        progressKontrol = false;
+                      });
+                    },
+                    child: Text("Dur"),
+                  ),
+                ],
+              ),
+              Text(ilerleme.toInt().toString()),
+              Slider(
+                max: 100.0,
+                min: 0.0,
+                value: ilerleme,
+                onChanged: (veri) {
+                  setState(() {
+                    ilerleme = veri;
+                  });
+                },
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SizedBox(
+                    width: 120,
+                    child: TextField(
+                      controller: tfSaat,
+                      decoration: const InputDecoration(
+                        hintText: "Saat",
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showTimePicker(
+                              context: context,
+                              initialTime:
+                                  TimeOfDay.fromDateTime(DateTime.now()))
+                          .then((value) {
+                        tfSaat.text = "${value!.hour} : ${value.minute}";
+                      });
+                    },
+                    icon: const Icon(Icons.access_time),
+                  ),
+                  SizedBox(
+                    width: 120,
+                    child: TextField(
+                      controller: tfTarih,
+                      decoration: const InputDecoration(
+                        hintText: "Tarih",
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2030))
+                        ..then((value) {
+                          tfTarih.text =
+                              "${value!.day} / ${value.month} / ${value.year}";
+                        });
+                    },
+                    icon: const Icon(Icons.date_range),
+                  ),
+                ],
+              ),
+              DropdownButton(
+                value: secilenUlke,
+                icon: Icon(Icons.arrow_drop_down),
+                items: ulkelerListesi.map((ulke) {
+                  return DropdownMenuItem(
+                    value: ulke,
+                    child: Text(ulke),
+                  );
+                }).toList(),
+                onChanged: (veri) {
+                  setState(() {
+                    secilenUlke = veri!;
+                  });
+                },
+              ),
+              GestureDetector(
+                onTap: () {
+                  print("Container tek tıklandı");
+                },
+                onDoubleTap: () {
+                  print("Çift tıklandı");
+                },
+                child: Container(
+                  width: 200,
+                  height: 200,
+                  color: Colors.yellow,
                 ),
-              ],
-            ),
-            ElevatedButton(
-              onPressed: () {
-                print("Switch durum : $switchKontrol");
-                print("CheckBox durum : $checkboxKontrol");
-                print("Radio Durum : $radioDeger");
-                print("Slider Durum : $ilerleme");
-              },
-              child: Text("Göster"),
-            ),
-          ],
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  print("Switch durum : $switchKontrol");
+                  print("CheckBox durum : $checkboxKontrol");
+                  print("Radio Durum : $radioDeger");
+                  print("Slider Durum : $ilerleme");
+                  print("Ülke Durum : $secilenUlke");
+                },
+                child: Text("Göster"),
+              ),
+            ],
+          ),
         ),
       ),
     );
