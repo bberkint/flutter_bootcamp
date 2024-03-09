@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lokasyon_kullanimi/anasayfa.dart';
+import 'package:lokasyon_kullanimi/harita_sayfa.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Anasayfa(),
+      home: HaritaSayfa(),
     );
   }
 }
