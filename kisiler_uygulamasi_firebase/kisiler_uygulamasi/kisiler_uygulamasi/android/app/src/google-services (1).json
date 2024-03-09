@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "539070938017",
+    "project_id": "egitim-bebdb",
+    "storage_bucket": "egitim-bebdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539070938017:android:05b8eb609b44e8c67429e0",
+        "android_client_info": {
+          "package_name": "com.example.kisiler_uygulamasi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKJzzNTBem2C3yVPENFN7MB5lZMcTGoJw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
